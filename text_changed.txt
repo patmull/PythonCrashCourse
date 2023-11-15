@@ -1,0 +1,6 @@
+We can read this text with Python.
+We can read this line by line.
+
+This is awesome!
+New line.
+Another new line.
