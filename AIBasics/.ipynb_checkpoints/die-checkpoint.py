@@ -16,17 +16,20 @@ class Die:
 
 
 class GameOfDie:
-    def __init__(self, num_of_trials=1000, main_num_sides=6, num_of_dices=1, dices_sizes=None):
+    def __init__(self, num_of_trials=1000, main_num_sides=6, num_of_dices=1, num_of_sides=None):
         self.results = []
         self.dices = []
         self.frequencies = []
 
-        if dices_sizes is not None:
-            for i in range(0, num_of_dices):
-                self.dices.append(Die(dices_sizes[i]))
-        else:
+        if num_of_sides is None:
             for i in range(0, num_of_dices):
                 self.dices.append(Die(main_num_sides))
+        else:
+            if type(num_of_sides) is list:
+                for side_num in num_of_sides:
+                    self.dices.append(Die(side_num))
+            else:
+                raise TypeError("num_of_sides must be a list.")
 
         self.num_of_trials = num_of_trials
         self.main_num_sides = main_num_sides
